@@ -19,6 +19,7 @@ var myName;
  * At the declaration phase, the variable myName is undefined because we have NOT initialized
  * it to anything
  */
+ 
 console.log(myName); // prints => undefined
 
 // 2. initialization or assignment //
