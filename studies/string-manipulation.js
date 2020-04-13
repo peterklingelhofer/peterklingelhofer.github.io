@@ -18,6 +18,16 @@ console.log('Maggie' + ' ' + 'Green'); // => prints Maggie Green
  * Strings may be added together with the + operator
  */
 
+// increment operator (+=)
+
+// 'x += y' is the same as 'x = x + y'
+// adds the values together, and assigns sum to variable on left
+
+var x = 2;
+var y = 3;
+x += y;
+console.log(x); // => prints 5, as x is now equal to 5
+
 // 2. string manipulation with string methods //
 
 /*
@@ -178,3 +188,4 @@ console.log(text16.split('')); // => prints ["a", ",", "b", ",", "c", ",", "d", 
  * argument that tells it what to split by. If the separator is '',
  * the returned array will be an array of single characters.
  */
+ 

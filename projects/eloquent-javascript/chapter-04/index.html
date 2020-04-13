@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
 </head>
-
 <body>
   <div id="mocha"></div>
-
   <footer class="container navbar bg-dark fixed-bottom">
     <div class="container">
       <a class="nav-item nav-link text-light" href="../chapter-02/index.html">Chapter 02</a>
@@ -21,7 +18,6 @@
       <a class="nav-item nav-link text-light" href="../chapter-05/index.html">Chapter 05</a>
     </div>
   </footer>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.5.3/mocha.min.js"></script>
   <script>
     mocha.setup('')
@@ -34,18 +30,14 @@
     var expect = chai.expect;
     var should = chai.should();
   </script>
-
   <!-- include source files here... -->
   <script src="journal.js"></script>
   <script src="helpers.js"></script>
   <script src="exercises.js"></script>
-
   <!-- include spec files here... -->
   <script src="../spec/chapter-04.spec.js"></script>
-
   <script>
     mocha.run()
   </script>
 </body>
-
 </html>

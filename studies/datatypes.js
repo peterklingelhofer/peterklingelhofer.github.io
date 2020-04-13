@@ -26,8 +26,21 @@ var string3 = `we can embed strings in strings like this: ${string}`;
 
 /* 
  * Strings in Javascript must be surrounded by quotes. Double quotes
- * and single quotes are interchangeable.
+ * and single quotes are interchangeable. When a string is assigned to a variable,
+ * that variable contains the value itself, because a string is an example of a 
+ * simple or primitive value. 
  */
+
+var str = "Hello friendly folks!";
+console.log(str.charAt(0)); // => prints H
+console.log(str.charAt(4)); // => prints o
+
+/*
+ To access characters individually, .charAt(i)
+ * can be used, with i indicating the index. The first character in the string is 
+ * index 0, and counts up by 1 with each subsequent character.
+ */
+
 var plant = 'cactus';
 console.log( `Water the ${plant}!` ); // => prints Water the cactus!
 /* 

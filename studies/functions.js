@@ -64,13 +64,17 @@ function add (a, b){ // This function's parameters are a and b
 // The above function is named 'add'.
 
 // 4. How do we assign a function to a variable? //
-function add (a, b){ // This function's parameters are a and b
+function add(a, b){ // This function's parameters are a and b
   return a + b;
 }
 
 var x = add;
-console.log(add(1, 2)); // => prints 3
 console.log(x(1, 2)); // => prints 3
+
+/*
+ * When we assign a function expression to a variable we can then use that
+ * variable to call that function.
+ */
 
 // 5. Functions can OPTIONALLY take inputs, and OPTIONALLY return a single value. 
 //    How do we specify inputs, and how do we specify outputs? //
@@ -111,22 +115,29 @@ function mySecondFunction() {
 //    returned from the Function and is held in memory somewhere (referenced), 
 //    that closure stays ALIVE, and data can continue to exist in these closures!
 
-/*
- * Whenever a function is created within another function, it is a closure.
- * The inner function is the closure. This closure is typically returned, so
- * you can use the outer function's variables later.
- */
+var count = (function () {
+  var counting = 0;
+  return function () {
+    counting += 1; 
+    return counting
+  }
+})();
 
-var globalVariable = 4;
-function noClosureFunction() {
-    var functionVar = 3; // No closure
-    return functionVar;
-}
-function closureFunction() {
-    var functionVar = 3 + globalVariable; // Closure,
-    return functionVar;
-}
+count();
+count();
+console.log(count()); // => prints 3
 
-/* In the closureFunction(), variables from the PARENT scope are used. This is 
- * an example of closure.
+
+
+/* In the count() function, variables from the PARENT scope are used. This is 
+ * an example of closure. The variable counting is assigned the return value 
+ * of a self-invoking function, which runs only once. This self-invoking
+ * function only runs one time, setting the counting variable to 0, and returns
+ * a function expression. Count has access to counting in the parent scope, and
+ * becomes a function itself. Counting is protected by the scope of the
+ * anonymous function. The only thing that can change counting is count.
+ * This is called a closure, it makes it possible to have private variables. 
+ * When a function has access to the parent scope, even after the parent
+ * function has closed, this is a closure.
  */
+ 
