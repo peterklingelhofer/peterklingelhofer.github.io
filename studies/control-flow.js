@@ -3,9 +3,9 @@
  *
  * 0. Conditional statements are a set of commands that execute if a specified
  * condition is true. These include if, else-if, else, and switch. There is no
- * limit to the amount of if and else-if statements you can have in a conditional 
- * chain. However, there can only be on else, or default, statement, at the end
- * of the conditional chain.
+ * limit to the amount of else-if statements you can have in a conditional 
+ * chain. However, there can only be one if statement at the beginning, and one 
+ * else, or default, statement, at the end of the conditional chain.
  */
  
 // 1. if //
@@ -77,10 +77,12 @@ switch (fruit) {
  * the program executes the associated statement. A switch statement involves
  * syntax where what follows the word 'case' inside the curly braces is the condition,
  * if the input yields this condition, what follows after the semicolon is executed,
- * and continues executing lines of code until the break statement. The default is
- * the default case to occur if none of the previous conditions are satisfied.
- * A switch is ideal to use when you're looking for a certain specific variables exact 
- * value to be satisfied, but an if statement is better if a series of boolean values 
- * need to be checked/satisfied. 
+ * and continues executing lines of code until the break statement. The break statement
+ * means this particular condition is finished, and done running. Following the break
+ * statement, either a new case or a default case can occur, or it will be the very end
+ * of the switch statement. The default and final case is case to occur if none of the 
+ * previous conditions are satisfied. A switch is ideal to use when you're looking for 
+ * a certain specific variables exact value to be satisfied, but an if statement is better 
+ * if a series of boolean values need to be checked/satisfied. 
  */
 

@@ -28,6 +28,11 @@ var y = 3;
 x += y;
 console.log(x); // => prints 5, as x is now equal to 5
 
+let weather = "The weather is ";
+weather += "cloudy ";
+weather += "today.";
+console.log(weather); // => prints "The weather is cloudy today."
+
 // 2. string manipulation with string methods //
 
 /*

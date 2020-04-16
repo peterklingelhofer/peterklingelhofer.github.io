@@ -5,6 +5,7 @@ function repeat(n, action) {
 }
 
 function characterScript(code) {
+  // will iterate through a collection of SCRIPTS
   for (let script of SCRIPTS) {
     if (script.ranges.some(([from, to]) => {
         return code >= from && code < to;
@@ -16,8 +17,8 @@ function characterScript(code) {
 }
 
 function countBy(items, groupName) {
-  let counts = [];
-  for (let item of items) {
+  let counts = []; // [{name: "name", count: 2}, {name: "name2", count: 1}]
+  for (let item of items) { // iterate over items
     let name = groupName(item);
     let known = counts.findIndex(c => c.name == name);
     if (known == -1) {
