@@ -28,8 +28,10 @@ var maleCount = function(array) {
     let arrOfMales = _.filter(array, function(customerObj) {
         // filter all of the male customers
         // each Customerobj has a gender property
+        // return males
         return customerObj.gender === 'male'; 
     });
+    // return length of males
     return arrOfMales.length;
 };
 
@@ -44,15 +46,18 @@ var femaleCount = function(array){
        // if the customerObj is not a female
             // keep my current sum   
             return sum;
+    // seed is 0
     }, 0);
 };
 
 var oldestCustomer = function(array){
     // find the oldest customer, input array, output string
-    let oldestAge = _.reduce(array, (prev, current) => {return (prev.age > current.age) ? prev : current}, 0);  
+    let oldestAge = _.reduce(array, (prev, current) => {return (prev.age > current.age) ? prev : current}, 0); 
+    // for loop start 0, end array length, increment +1
     for (let i = 0; i < array.length; i++) {
+        // if age key in youngest age is same as age in array at index i
         if (oldestAge.age === array[i].age) {
-            // console.log('Oldest Name', array[i].name);
+            // return name at array at index i
             return array[i].name;
         }
     }
@@ -61,88 +66,97 @@ var oldestCustomer = function(array){
 
 var youngestCustomer = function(array){
     // find the oldest customer, input array, output string
-    let oldestAge = _.reduce(array, (prev, current) => {return (prev.age < current.age) ? prev : current}, 0);  
+    let youngAge = _.reduce(array, (prev, current,) => {return (prev.age < current.age) ? prev : current}, 0);  
+    // for loop start 0, end array length, increment +1
     for (let i = 0; i < array.length; i++) {
-        if (oldestAge.age === array[i].age) {
-            // console.log('Youngest Name', array[i].name);
+        // if age key in oldest age is same as age in array at index i
+        if (youngAge.age === array[i].age) {
+            // return name at array at index i
             return array[i].name;
         }
     }
 };
 
 var averageBalance = function(array){
+    // declare totalCustomers, assign it to 0
     let totalCustomers = 0;
-    let tempConversion
+    // declare tempConversation variable
+    let tempConversion;
     // using the reduce function find the TOTAL BALANCE of the customers
     let totalBalance = _.reduce(array, function(sum, customerObj){
        // if the customerObj is a female
-            // increment my sum by 1
-            // if(customerObj.gender === 'female'){
-            //     sum += 1;
-            // }
             //change string to get rid of dollar sign
-            //convert string to number
             tempConversion = customerObj.balance.replace(/\$/g, '');
+            //change string to get rid of comma
             tempConversion = tempConversion.replace(/\,/g, '');
-            sum += parseFloat(tempConversion)
-            totalCustomers +=1
-            // keep my current sum
+            // increment my sum by balance, converting string to a number
+            sum += parseFloat(tempConversion);
+            // increment totalCustomers amount by +1
+            totalCustomers +=1;
+            // return my current sum
             return sum;
     }, 0);
-    // console.log('totalBalance',totalBalance)
-    let averageBalance = (totalBalance / totalCustomers)
-    // console.log('averageBalance',averageBalance)
+    // assign averageBalance to totalBalance divided by totalCustomers
+    let averageBalance = (totalBalance / totalCustomers);
+    // return averageBalance
     return averageBalance;
 };
 
 var firstLetterCount = function(array, letter){
+    // return reduce function with input array, function parameters sum and customerObj
     return _.reduce(array, function(sum, customerObj){
        // if the customerObj first letter is input
-            // increment my sum by 1
             if(customerObj.name[0].toLowerCase() === letter.toLowerCase()){
+            // increment my sum by 1
                 sum += 1;
             }
+            // return sum
             return sum;
+    // seed is 0
     }, 0);
 };
 
 
 var friendFirstLetterCount = function(array, customer, letter){
+    // for loop start 0, end array length, iterate +1
     for (let i = 0; i < array.length; i++) {
+        // if customer is name at array element at index i
         if (customer === array[i].name) {
+            // return reduce, finding each persons friend list and summing their friends starting at input letter
     return _.reduce(array[i].friends, function(sum, customerFriends){
        // if the customerObj friend first letter is input
-            // increment my sum by 1
             if(customerFriends.name[0].toLowerCase() === letter.toLowerCase()){
+            // increment my sum by 1
                 sum += 1;
             }
+            // return sum
             return sum;
+    // seed is 0        
     }, 0);
-            
         }
     }
 };
 
 var friendsCount = function(array, name){
+    // declare storage array
     let areFriendsWith = [];
-        // console.log(array);
-        // console.log(name);
+    // for loop, start at 0, end at array length, iterate +1
     for (let i = 0; i < array.length; i++) {
-        // console.log(i);
+        // for loop, start at 0, end at length of each person's friend's list, iterate +1
         for (let j = 0; j < array[i].friends.length; j++) {
+            // for loop through keys in each person's friend's list
             for (let key in array[i].friends[j]) {
-                
-            if (array[i].friends[j].name === name) {
-            areFriendsWith.push(array[i].name);
+                // if name on friend's list is input name
+                if (array[i].friends[j].name === name) {
+                // push name to storage array
+                areFriendsWith.push(array[i].name);
             }
             }
         }
-            // console.log('ARE FRIENDS WITH(inloop)', areFriendsWith);
     }
-    // console.log('ARE FRIENDS WITH', areFriendsWith);
-    // return areFriendsWith;
-    
+    // remove duplicate names
     let unique = [...new Set(areFriendsWith)];
+    // return unique names
     return unique;
 };
 
@@ -173,62 +187,74 @@ var friendsCount = function(array, name){
 // } }
 
 var topThreeTags = function(array){
-    let words = [];
+    // declare container for all tags
+    let tags = [];
+    // for loop through obj array, start 0, end obj array length, iterate +1
     for (let i = 0; i < array.length; i++) {
+        // for loop through each object's tag list, start 0, end length of tag list, iterate +1
         for (let j = 0; j < array[i].tags.length; j++) {
-            words.push(array[i].tags[j]);
+        // push each tag found to the tags array for storage
+            tags.push(array[i].tags[j]);
             // console.log(array[i])
         }
     }
-    // console.log(words);
-    var wordCount = _.reduce(words, function(accObj, word){
-      // check the object if the word exist as a key
-      if(accObj[word]){
-        // increment it's count value
-        accObj[word]++;
-      } else { // if the obj does not contain the word as a key
-        // create a new key/val pair w/ the word as key and 1 as val
-        accObj[word] = 1;
+    // assign variable tagCount reduce with input tags, function parameters accObj and tag
+    let tagCount = _.reduce(tags, function(tagTally, tag){
+      // check the object to see if the tag exists as a key
+      if(tagTally[tag]){
+        // if it exists increment it's count value
+        tagTally[tag]++;
+        // if the obj does not contain the tag as a key
+      } else { 
+        // create a new key-value pair with the tag as key, setting 1 as the value
+        tagTally[tag] = 1;
       }
-      return accObj;
-    }, {})
-    // console.log(wordCount);
-    // need to sort the occurences of each letter. Cant use the sort method on wordCount because we would get a type error, so we're going to add the properties as sub arrays in a larger array called arrayOfNestedCounts.
-    var arrayOfNestedCounts = []
-    for(let key in wordCount){
-      // Push an array with an element of the word and its count 
-      arrayOfNestedCounts.push([key, wordCount[key]])
+      // return accObj
+      return tagTally;
+    }, {});
+    // declare empty array variable
+    let tagCountsArray = [];
+    // with a let key in wordCount, add the properties as sub arrays in a larger array called tagCountsArray.
+    for(let key in tagCount){
+      // Push an array with an element of the tag and its count 
+      tagCountsArray.push([key, tagCount[key]]);
     }
-    // sort by the word's count (index 1 of the array)
-    arrayOfNestedCounts.sort(function(a, b){
-      // the sort function will sort in decending order
+    // sort by the tag's count (index 1 of the array)
+    tagCountsArray.sort(function(a, b){
+    // the sort function will sort in decending order
       return b[1] - a[1];
-    })
-    // slide off the first 3 elements in the array. Those will be the top 3 words 
-    var top3arr = arrayOfNestedCounts.slice(0, 3)
-    // using map, change the elements in the array from sub arrays to the words at the 0th index
-    var top3Words = _.map(top3arr, function(wordAndCountArr){
+    });
+    // get the first three elements of the array, the three most common tags
+    let top3arr = tagCountsArray.slice(0, 3);
+    // using map, change the elements in the array from sub arrays to the tags at the 0th index
+    let top3Tags = _.map(top3arr, function(tagAndCountArr){
       // return the word in place of the nested array elements
-      return wordAndCountArr[0];
-    })
-    return top3Words;
-    // console.log(top3Words);
-}    
-
-
+      return tagAndCountArr[0];
+    });
+    // return top3Tags
+    return top3Tags;
+};  
 
 
 
 var genderCount = function(array){
-    let seed = {female: 0, male: 0, 'non-binary': 0}; 
+    // declare seed, object with keys female, male, non-binary, all assigned starting value 0
+    // let seed = {female: 0, male: 0, 'non-binary': 0}; 
+    // return reduce function, input array, function with parameters personCount, genderValue, i
     return _.reduce(array, function(personCount, genderValue, i){
-        if (array[i]['gender']) {
-            personCount[array[i]['gender']] += 1; 
+        // if array at index i gender key exists
+        let tempGender = array[i].gender;
+        if (personCount[tempGender]) {
+            // add one to the key's number
+            personCount[tempGender] += 1;
+        // otherwise
         } else {
-            personCount[array[i]['gender']] = 1; 
+            // create that gender key in the object and assign it to 1
+            personCount[tempGender] = 1; 
         } 
+        // return the sum object personCount
         return personCount; 
-    }, seed);
+    }, {});
 };
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
