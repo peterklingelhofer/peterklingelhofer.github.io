@@ -238,8 +238,6 @@ var topThreeTags = function(array){
 
 
 var genderCount = function(array){
-    // declare seed, object with keys female, male, non-binary, all assigned starting value 0
-    // let seed = {female: 0, male: 0, 'non-binary': 0}; 
     // return reduce function, input array, function with parameters personCount, genderValue, i
     return _.reduce(array, function(personCount, genderValue, i){
         // if array at index i gender key exists
